@@ -1,0 +1,14 @@
+[Unit]
+Description=Manage Polar  service
+
+[Service]
+WorkingDirectory=/home/senzmate/downloads
+ExecStart=/bin/java -Xms128m -Xmx256m -jar polar-service-1.1.0.0.jar
+User=senzmate
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
