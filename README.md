@@ -1,4 +1,5 @@
-# Readme file for deploying spring-boot service with Angular Front End On Remote host
+# Automate Infrastructure Configuration & Deployments(SpringBoot) with Ansible
+
 Note: This guide is only for deploying spring-boot service and Angular application on the remote cent-os machine &  
 To Run ansible-playbook we need Linux/unix local machine (Windows user needs virtual box)
 
