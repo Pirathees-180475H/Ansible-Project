@@ -3,7 +3,7 @@
 Note: This guide is only for deploying spring-boot service and Angular application on the remote cent-os machine &  
 To Run ansible-playbook we need Linux/unix local machine (Windows user needs virtual box)
 
-###Step 1 : Create A new user in Remote host
+### Step 1 : Create A new user in Remote host
 1.we have to create a  user in remote host with root access
 
 2.Needs to make ssh connection between local machine and remote machine (by using public key of local machine)
@@ -16,12 +16,12 @@ To Run ansible-playbook we need Linux/unix local machine (Windows user needs vir
     
     We can ensure it by running the following command On remote host: $ sudo su
 
-###Step 2 : Install Ansible on linux/Unix local machine
+### Step 2 : Install Ansible on linux/Unix local machine
 1.In ubuntu machine run following command in terminal ->$ sudo apt install ansible / sudo apt-get install ansible -y
 
 2.If ansible is correctly installed then following command gives version of ansible ->$ansible --version / $ansible -version
 
-###Step 3 : We need to configure remote hosts ip addresses To run tasks On them
+### Step 3 : We need to configure remote hosts ip addresses To run tasks On them
 1.We need to add remote hosts ip addresses in local machine's hosts file
 
     1.1) you can find host file Under " /etc/ansible "   folder in your local machine
@@ -39,8 +39,8 @@ To Run ansible-playbook we need Linux/unix local machine (Windows user needs vir
     1.4) indicate -hosts:groupName in top of playbook
          example: -hosts:servers
 
-###Step 4: Prepare nginx.conf,spring-boot JAR,Angular tar.gz,.service file in local machine
-####We need to prepare some files and configs in Our local machine
+### Step 4: Prepare nginx.conf,spring-boot JAR,Angular tar.gz,.service file in local machine
+#### We need to prepare some files and configs in Our local machine
     1.Prepare nginx.conf On local machine
       configure nginx.conf based on our needs
       Note:This Repository's nginx.conf configured to listen on port:9030 for www.ip/service
@@ -68,7 +68,7 @@ To Run ansible-playbook we need Linux/unix local machine (Windows user needs vir
       to  create tar.gz
       tar -czvf <application-name/some-name>.tar.gz <application-folder>
 
-###Step 5: Need to change some values of variables in Playbook
+### Step 5: Need to change some values of variables in Playbook
 #### we need to copy some files and configs From our local Machines that's why we need to change some values of variables
 
     1. Change the values of following variables in Play-book
@@ -84,7 +84,7 @@ To Run ansible-playbook we need Linux/unix local machine (Windows user needs vir
         2.6)frontEndApplicationName -> Name of the tar.gz(with-out extension)
 
 
-###Step 6:Run Ansible playbook
+### Step 6:Run Ansible playbook
 1)you need to have root access in all Remote hosts
 
 2)Run playbook on local machine using following command:
@@ -96,18 +96,18 @@ command format --> $ ansible-playbook localLocationOfBook --user=remote_username
     Note-> to Run in this way,You need to have same username,pwd in all Remote hosts
 
 
-#important
+# important
 1)remote username needs to same as local machine's username
 
     To have diffrent usernames between remote and local -> we needs to configure Play-book with "remote_user: remote_username" ;
     
     https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html
     
-#important 2
+# important 2
 1) If nginx doesn't Redirect to relevant applications, check the permission of the files, and folders(on path) related to the application and set them as 755
 (including /home/user )
 
-#Optional
+# Optional
 1) Main Tasks are divided into sub tasks
 
    we can disable/skip main tasks  as well as subtasks by using "when=false" module
